@@ -10,3 +10,6 @@ cmd = "npm run start"
 [variables]
 PORT = "3000"
 NIXPACKS_NODE_VERSION = "20"
+# Prevent Coolify from emitting null for these when domain/FQDN is empty
+COOLIFY_URL = ""
+COOLIFY_FQDN = ""
