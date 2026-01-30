@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn{
+        @apply flex gap-2 items-center justify-center py-4 px-6
+    }
+    .btn-primary {
+        @apply bg-monday-blue text-white rounded-full;
+    }
+    .btn-black {
+        @apply bg-monday-black text-white rounded-2xl;
+    }
+    .btn-red {
+        @apply bg-monday-red text-white rounded-full;
+    }
+    .btn-primary-opacity {
+        @apply bg-monday-blue/10 text-monday-blue rounded-2xl ring-0 hover:ring-[1.5px] hover:ring-monday-blue transition-300;
+    }
+    .btn-red-opacity {
+        @apply bg-monday-red/10 text-monday-red rounded-2xl ring-0 hover:ring-[1.5px] hover:ring-monday-red transition-300;
+    }
+}
+
+@layer utilities {
+    .blue-gradient{
+        background: linear-gradient(336.99deg, #0A3A89 0%, #1053D5 100%);
+    }
+    .transition-300{
+        transition: all 300ms ease-in-out;
+    }
+}
+
+/* Fallback styles jika Tailwind tidak dimuat */
+body{
+    font-family: "Lexend Deca", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 100vh;
+    background-color: #F3F5F9;
+    color: #292D32;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fallback untuk loading spinner */
+.loading-spinner {
+    width: 2rem;
+    height: 2rem;
+    border: 4px solid #1053D5;
+    border-top: 4px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hide-scrollbar {
+    scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+#root {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+/* Fallback untuk error state */
+.error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.error-container h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #292D32;
+    margin-bottom: 0.5rem;
+}
+
+.error-container p {
+    color: #6A7686;
+    margin-bottom: 1rem;
+}
+
+.error-container button {
+    background-color: #1053D5;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.error-container button:hover {
+    background-color: #0A3A89;
+}
