@@ -1,4 +1,4 @@
-import { getApiUrl, APP_CONFIG } from '@/config/app'
+import { APP_CONFIG, getApiUrl } from '@/config/app'
 
 /**
  * Utility class untuk API calls
@@ -54,7 +54,7 @@ class ApiService {
   async request(endpoint, options = {}) {
     const url = getApiUrl(endpoint)
     const headers = this.createHeaders(options.includeAuth !== false)
-    
+
     const config = {
       headers,
       ...options
@@ -93,11 +93,11 @@ class ApiService {
       return await response.json()
     } catch (error) {
       clearTimeout(timeoutId)
-      
+
       if (error.name === 'AbortError') {
         throw new Error('Request timeout')
       }
-      
+
       throw error
     }
   }
@@ -171,7 +171,7 @@ export const deleteCategory = (id, options = {}) => apiService.delete(`/api/v1/c
 export const uploadImage = (file, options = {}) => {
   const formData = new FormData()
   formData.append('image', file)
-  
+
   return apiService.request('/api/v1/upload/category-image', {
     method: 'POST',
     body: formData,
@@ -194,7 +194,7 @@ export const deleteProduct = (id, options = {}) => apiService.delete(`/api/v1/pr
 export const uploadProductImage = (file, options = {}) => {
   const formData = new FormData()
   formData.append('image', file)
-  
+
   return apiService.request('/api/v1/upload/product-image', {
     method: 'POST',
     body: formData,
@@ -224,7 +224,7 @@ export const deleteUser = (id, options = {}) => apiService.delete(`/api/v1/users
 export const uploadUserImage = (file, options = {}) => {
   const formData = new FormData()
   formData.append('image', file)
-  
+
   return apiService.request('/api/v1/upload/photo', {
     method: 'POST',
     body: formData,
@@ -255,7 +255,7 @@ export const getWarehousebyIDProducts = (warehouseId, options = {}) => apiServic
 export const uploadWarehouseImage = (file, options = {}) => {
   const formData = new FormData()
   formData.append('image', file)
-  
+
   return apiService.request('/api/v1/upload-warehouse', {
     method: 'POST',
     body: formData,
@@ -290,7 +290,7 @@ export const deleteMerchant = (id, options = {}) => apiService.delete(`/api/v1/m
 export const uploadMerchantImage = (file, options = {}) => {
   const formData = new FormData()
   formData.append('image', file)
-  
+
   return apiService.request('/api/v1/upload-merchant', {
     method: 'POST',
     body: formData,
@@ -329,7 +329,7 @@ export const getTransactions = (query = '', options = {}) => apiService.get(`/ap
 export const getTransactionById = (id, options = {}) => apiService.get(`/api/v1/transactions/${id}`, options)
 export const createTransaction = (data, options = {}) => apiService.post('/api/v1/transactions', data, options)
 export const updateTransaction = (id, data, options = {}) => apiService.put(`/api/v1/transactions/${id}`, data, options)
-export const deleteTransaction = (id, options = {}) => apiService.delete(`/api/v1/transactions/${id}`, options) 
+export const deleteTransaction = (id, options = {}) => apiService.delete(`/api/v1/transactions/${id}`, options)
 
 // Utility function untuk mendapatkan merchant data dari localStorage
 export const getMerchantDataFromStorage = () => {
@@ -352,7 +352,7 @@ export const getFirstMerchantFromStorage = () => {
 export const getMerchantByIdFromStorage = (merchantId) => {
   const merchantData = getMerchantDataFromStorage()
   if (!merchantData) return null
-  
+
   return merchantData.find(merchant => merchant.id === merchantId) || null
 }
 
@@ -379,16 +379,16 @@ export const clearAllLocalStorageData = () => {
   localStorage.removeItem('auth_token')
   localStorage.removeItem('user')
   localStorage.removeItem('merchant_data')
-  
+
   // Data transaction wizard
   localStorage.removeItem('transactionWizard')
   localStorage.removeItem('transactionStep1')
   localStorage.removeItem('transactionStep2')
-  
+
   // Data payment dan transaction
   localStorage.removeItem('lastPaymentStatus')
   localStorage.removeItem('lastTransaction')
-  
+
   // Hapus semua data lain yang mungkin ada
   const keysToRemove = []
   for (let i = 0; i < localStorage.length; i++) {
@@ -397,7 +397,7 @@ export const clearAllLocalStorageData = () => {
       keysToRemove.push(key)
     }
   }
-  
+
   // Hapus semua key yang ditemukan
   keysToRemove.forEach(key => {
     localStorage.removeItem(key)
@@ -407,9 +407,9 @@ export const clearAllLocalStorageData = () => {
 export const isTransactionWizardComplete = () => {
   const data = getTransactionWizardData()
   if (!data) return false
-  
-  return data.customerInfo?.customerName && 
-         data.customerInfo?.phoneNumber && 
+
+  return data.customerInfo?.customerName &&
+         data.customerInfo?.phoneNumber &&
          data.customerInfo?.merchantId &&
          data.assignedProducts?.length > 0
-} 
+}
