@@ -1,15 +1,15 @@
 <template>
-  <Layout 
+  <Layout
     pageTitle="Update Stock Product"
     breadcrumbText="Merchant Details"
     :breadcrumbLink="`/merchants/${$route.params.merchantId}`">
-    
+
     <!-- Main Content -->
     <main class="flex flex-col gap-6 flex-1">
       <div class="flex gap-6">
         <!-- Left Column - Form -->
         <div class="flex flex-col gap-6 w-full">
-          
+
           <!-- Warehouse Details Card -->
           <div class="flex flex-col w-full rounded-3xl p-[18px] gap-5 bg-white">
             <h2 class="font-semibold text-xl">Warehouse Details</h2>
@@ -62,7 +62,7 @@
                 </div>
               </div>
             </div>
-            
+
             <h2 class="font-semibold text-xl">Update Stock</h2>
             <label class="group relative">
               <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border ">
@@ -71,15 +71,15 @@
               <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
                 Type a Stock
               </p>
-              <input 
-                type="number" 
+              <input
+                type="number"
                 v-model="formData.newStock"
                 required
                 min="0"
-                class="appearance-none w-full h-[72px] font-semibold text-lg rounded-3xl border-[1.5px] border-monday-border pl-20 pr-6 pb-[14.5px] pt-[34.5px] placeholder-shown:pt-[14.5px] focus:border-monday-black transition-300" 
+                class="appearance-none w-full h-[72px] font-semibold text-lg rounded-3xl border-[1.5px] border-monday-border pl-20 pr-6 pb-[14.5px] pt-[34.5px] placeholder-shown:pt-[14.5px] focus:border-monday-black transition-300"
                 placeholder="">
             </label>
-            
+
             <!-- Stock Summary -->
             <div v-if="formData.newStock !== ''" class="flex flex-col gap-2 p-4 rounded-2xl bg-monday-background">
               <p class="font-semibold text-lg">Stock Summary</p>
@@ -99,7 +99,7 @@
                 </span>
               </div>
             </div>
-            
+
             <!-- Action Buttons -->
             <div class="flex items-center justify-end gap-4">
               <router-link :to="`/merchants/${$route.params.merchantId}`" class="btn btn-red font-semibold">
@@ -182,42 +182,36 @@ export default {
       const query = this.$route.query
       const merchantId = this.$route.params.merchantId
       const productId = this.$route.params.productId
-      
+
       if (!productId || !merchantId) {
         console.error('Product ID or Merchant ID not provided')
         this.$router.push('/merchants')
         return
       }
-      
+
       // Load data from query parameters
       this.warehouseDetails = {
         name: query.warehouse_name || 'Warehouse tidak ditemukan',
         phone: query.warehouse_phone || 'N/A'
       }
-      
+
       this.merchantDetails = {
         name: query.merchant_name || 'Merchant tidak ditemukan',
         keeper: query.keeper_name || 'Keeper tidak ditemukan'
       }
-      
+
       this.productDetails = {
         name: query.product_name || 'Product tidak ditemukan',
         price: parseInt(query.product_price) || 0,
         currentStock: parseInt(query.current_stock) || 0
       }
-      
+
       // Set initial new stock value to current stock
       this.formData.newStock = this.productDetails.currentStock
-      
-  
-        warehouse: this.warehouseDetails,
-        merchant: this.merchantDetails,
-        product: this.productDetails
-      })
     },
-    
 
-    
+
+
     async handleSubmit() {
       // Validasi form
       if (!this.formData.newStock || this.formData.newStock < 0) {
@@ -237,16 +231,16 @@ export default {
           product_id: parseInt(productId),
           merchant_product_id: parseInt(this.$route.query.merchant_product_id)
         }
-        
+
         // Call API to update merchant product stock
         const response = await updateMerchantProductStock(requestData)
-        
+
         // Show success message
         alert('Stock updated successfully!')
-        
+
         // Redirect to merchant details page
         this.$router.push(`/merchants/${merchantId}`)
-        
+
       } catch (error) {
         console.error('Error updating stock:', error)
         alert('Gagal mengupdate stock. Silakan coba lagi.')
@@ -254,17 +248,17 @@ export default {
         this.isLoading = false
       }
     },
-    
+
     formatPrice(price) {
       return new Intl.NumberFormat('id-ID').format(price)
     },
-    
+
     getStockDifference() {
       if (this.formData.newStock === '') return 0
       const difference = this.formData.newStock - this.productDetails.currentStock
       return difference >= 0 ? `+${difference}` : `${difference}`
     },
-    
+
     getStockDifferenceClass() {
       if (this.formData.newStock === '') return ''
       const difference = this.formData.newStock - this.productDetails.currentStock
@@ -331,4 +325,4 @@ input:invalid {
 input:valid {
   border-color: #10b981;
 }
-</style> 
+</style>
