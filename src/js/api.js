@@ -225,7 +225,7 @@ export const uploadUserImage = (file, options = {}) => {
   const formData = new FormData()
   formData.append('image', file)
   
-  return apiService.request('/api/v1/users/upload/photo', {
+  return apiService.request('/api/v1/upload/photo', {
     method: 'POST',
     body: formData,
     headers: {
