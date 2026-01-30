@@ -16,5 +16,12 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true
+  },
+  preview: {
+    allowedHosts: [
+      'warehouse-pos.amawan.app'
+    ],
+    host: true, // Opsional: pastikan server listen ke network
+    port: 3000, // Sesuaikan dengan port yang lo pakai di Nginx
   }
 })
