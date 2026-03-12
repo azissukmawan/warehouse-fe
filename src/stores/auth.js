@@ -1,233 +1,309 @@
-import { defineStore } from 'pinia'
-import { APP_CONFIG } from '@/config/app'
-import { getMerchants, clearAllLocalStorageData } from '@/js/api'
+import { defineStore } from "pinia";
+import { APP_CONFIG } from "@/config/app";
+import { getMerchants, clearAllLocalStorageData } from "@/js/api";
 
-export const useAuthStore = defineStore('auth', {
+/**
+ * Normalizes roles value from backend to a single lowercase string.
+ * Backend may return:
+ *   - []string array  → e.g. ["manager"] or []
+ *   - comma-separated string → e.g. "manager,keeper" or ""
+ *   - null / undefined
+ * We store a single lowercase role string internally (takes first element).
+ */
+function normalizeRole(roles) {
+  if (Array.isArray(roles)) {
+    return roles.length > 0 ? roles[0].toLowerCase() : "";
+  }
+  if (typeof roles === "string") {
+    // Support comma-separated string (legacy)
+    const parts = roles
+      .split(",")
+      .map((r) => r.trim())
+      .filter(Boolean);
+    return parts.length > 0 ? parts[0].toLowerCase() : "";
+  }
+  return "";
+}
+
+export const useAuthStore = defineStore("auth", {
   state: () => ({
     user: null,
     isAuthenticated: false,
     token: null,
-    merchantData: null
+    merchantData: null,
   }),
 
   getters: {
     currentUser: (state) => state.user,
     isLoggedIn: (state) => state.isAuthenticated,
-    userRole: (state) => state.user?.roles || null,
-    currentMerchant: (state) => state.merchantData
+    /**
+     * Returns the user's role string (always lowercase), or null when not available.
+     * Using ?? instead of || so an empty string is returned as-is (not coerced to null).
+     */
+    userRole: (state) => {
+      const role = state.user?.roles;
+      if (role === null || role === undefined) return null;
+      return typeof role === "string" ? role : "";
+    },
+    currentMerchant: (state) => state.merchantData,
   },
 
   actions: {
     async login(credentials) {
       try {
-        // Panggilan API login langsung menggunakan fetch
-        const response = await fetch(`${APP_CONFIG.API.BASE_URL}${APP_CONFIG.API.LOGIN_ENDPOINT}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
+        const response = await fetch(
+          `${APP_CONFIG.API.BASE_URL}${APP_CONFIG.API.LOGIN_ENDPOINT}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(credentials),
           },
-          body: JSON.stringify(credentials)
-        })
+        );
 
         if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}))
-          throw new Error(errorData.message || 'Login failed')
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.message || "Login failed");
         }
 
-        const data = await response.json()
-        
-        // Sesuaikan dengan response API yang Anda berikan
-        const { token, user } = data.data
+        const data = await response.json();
+
+        // Defensive: ensure data.data exists
+        if (!data?.data) {
+          throw new Error("Response format tidak valid dari server.");
+        }
+
+        const { token, user } = data.data;
+
+        if (!token) {
+          throw new Error("Token tidak ditemukan dalam response server.");
+        }
+
+        if (!user) {
+          throw new Error("Data user tidak ditemukan dalam response server.");
+        }
+
+        // Normalize roles — backend may return [] array or "" string
+        const normalizedRole = normalizeRole(user.roles);
 
         this.user = {
           id: user.id,
           email: user.email,
-          roles: user.roles,
-          name: user.email.split('@')[0], // Fallback name dari email
-          avatar: '/src/assets/images/photos/photos-1.png' // Default avatar
-        }
-        this.token = token
-        this.isAuthenticated = true
+          roles: normalizedRole, // always a clean lowercase string
+          name: user.name || user.email?.split("@")[0] || "User",
+          avatar: "/src/assets/images/photos/photos-1.png",
+        };
+        this.token = token;
+        this.isAuthenticated = true;
 
         // Simpan ke localStorage
-        localStorage.setItem('auth_token', token)
-        localStorage.setItem('user', JSON.stringify(this.user))
+        localStorage.setItem("auth_token", token);
+        localStorage.setItem("user", JSON.stringify(this.user));
 
-        // Jika user adalah keeper, fetch dan simpan data merchant
-        if (user.roles?.toLowerCase() === 'keeper') {
-          await this.fetchAndStoreMerchantData()
+        // Validasi: pastikan user punya role yang valid sebelum diteruskan
+        const validRoles = ["manager", "keeper"];
+        if (!validRoles.includes(normalizedRole)) {
+          // Reset auth state — jangan biarkan user masuk dengan role kosong
+          this.user = null;
+          this.token = null;
+          this.isAuthenticated = false;
+          localStorage.removeItem("auth_token");
+          localStorage.removeItem("user");
+
+          const roleDisplay = normalizedRole ? `"${normalizedRole}"` : "kosong";
+          throw new Error(
+            `Akun ini belum memiliki role yang valid (role: ${roleDisplay}). ` +
+              `Hubungi administrator untuk mendapatkan akses.`,
+          );
         }
 
-        return data
+        // Jika user adalah keeper, fetch dan simpan data merchant
+        if (normalizedRole === "keeper") {
+          await this.fetchAndStoreMerchantData();
+        }
+
+        return data;
       } catch (error) {
-        console.error('Login error:', error)
-        throw new Error(error.message || 'Login gagal. Silakan coba lagi.')
+        console.error("Login error:", error);
+        throw new Error(error.message || "Login gagal. Silakan coba lagi.");
       }
     },
 
     async fetchAndStoreMerchantData() {
       try {
         if (!this.user?.id) {
-          console.error('User ID not found')
-          return
+          console.error("User ID not found");
+          return;
         }
 
-        // Fetch merchant data dengan keeper_id
-        const response = await getMerchants(`?keeper_id=${this.user.id}`)
-        
+        const response = await getMerchants(`?keeper_id=${this.user.id}`);
+
         if (response.data) {
-          const merchantData = Array.isArray(response.data) ? response.data : [response.data]
-          
-          // Simpan merchant data tanpa merchant_products ke localStorage
-          const merchantDataForStorage = merchantData.map(merchant => ({
+          const merchantData = Array.isArray(response.data)
+            ? response.data
+            : [response.data];
+
+          const merchantDataForStorage = merchantData.map((merchant) => ({
             id: merchant.id,
             name: merchant.name,
             address: merchant.address,
             photo: merchant.photo,
             phone: merchant.phone,
             keeper_id: merchant.keeper_id,
-            keeper_name: merchant.keeper_name
-          }))
+            keeper_name: merchant.keeper_name,
+          }));
 
-          this.merchantData = merchantDataForStorage
-          localStorage.setItem('merchant_data', JSON.stringify(merchantDataForStorage))
+          this.merchantData = merchantDataForStorage;
+          localStorage.setItem(
+            "merchant_data",
+            JSON.stringify(merchantDataForStorage),
+          );
         }
       } catch (error) {
-        console.error('Error fetching merchant data:', error)
+        console.error("Error fetching merchant data:", error);
+        // Non-fatal: login tetap berhasil meski merchant data gagal di-fetch
       }
     },
 
     async logout() {
-      this.user = null
-      this.token = null
-      this.isAuthenticated = false
-      this.merchantData = null
-
-      // Hapus semua data dari localStorage
-      this.clearLocalStorageData()
+      this.user = null;
+      this.token = null;
+      this.isAuthenticated = false;
+      this.merchantData = null;
+      this.clearLocalStorageData();
     },
 
-    // Method untuk reset state ke default
     resetState() {
-      this.user = null
-      this.token = null
-      this.isAuthenticated = false
-      this.merchantData = null
+      this.user = null;
+      this.token = null;
+      this.isAuthenticated = false;
+      this.merchantData = null;
     },
 
-    // Method untuk menghapus semua data localStorage
     clearLocalStorageData() {
-      clearAllLocalStorageData()
-      this.resetState()
+      clearAllLocalStorageData();
+      this.resetState();
     },
 
     async checkAuth() {
       try {
-        const token = localStorage.getItem('auth_token')
-        const user = localStorage.getItem('user')
-        const merchantData = localStorage.getItem('merchant_data')
+        const token = localStorage.getItem("auth_token");
+        const userRaw = localStorage.getItem("user");
+        const merchantData = localStorage.getItem("merchant_data");
 
-        if (token && user) {
-          this.token = token
-          this.user = JSON.parse(user)
-          this.isAuthenticated = true
-          
-          // Load merchant data jika ada
-          if (merchantData) {
-            this.merchantData = JSON.parse(merchantData)
+        if (token && userRaw) {
+          const parsedUser = JSON.parse(userRaw);
+
+          // Normalize roles juga saat load dari localStorage
+          // (jaga-jaga kalau ada data lama yang tersimpan sebagai array)
+          if (parsedUser?.roles !== undefined) {
+            parsedUser.roles = normalizeRole(parsedUser.roles);
           }
-          
-          return true
+
+          this.token = token;
+          this.user = parsedUser;
+          this.isAuthenticated = true;
+
+          if (merchantData) {
+            this.merchantData = JSON.parse(merchantData);
+          }
+
+          return true;
         }
 
-        return false
+        return false;
       } catch (error) {
-        console.error('Error in checkAuth:', error)
-        // Clear invalid data
-        this.clearLocalStorageData()
-        return false
+        console.error("Error in checkAuth:", error);
+        this.clearLocalStorageData();
+        return false;
       }
     },
 
     async fetchCurrentUser() {
       try {
-        // Import getUserById secara dinamis untuk menghindari circular dependency
-        const { getUserById } = await import('@/js/api')
-        const response = await getUserById(this.user.id)
-        
+        const { getUserById } = await import("@/js/api");
+        const response = await getUserById(this.user.id);
+
         if (response.data) {
-          // Update user data tapi pertahankan role dari login
           this.user = {
             id: response.data.id,
             email: response.data.email,
-            name: this.user.name || response.data.email.split('@')[0],
-            roles: this.user.roles, // Pertahankan role dari login
-            avatar: response.data.photo || '/src/assets/images/photos/photos-1.png'
-          }
+            name: this.user.name || response.data.email?.split("@")[0],
+            roles: this.user.roles, // Pertahankan role dari login (sudah normalized)
+            avatar:
+              response.data.photo || "/src/assets/images/photos/photos-1.png",
+          };
 
-          
-          // Update localStorage
-          localStorage.setItem('user', JSON.stringify(this.user))
+          localStorage.setItem("user", JSON.stringify(this.user));
         }
-        
-        return response
+
+        return response;
       } catch (error) {
-        console.error('Error fetching current user:', error)
-        // Jika gagal fetch user, gunakan data dari localStorage
-        return this.user
+        console.error("Error fetching current user:", error);
+        return this.user;
       }
     },
 
-    // Method untuk mendapatkan redirect URL berdasarkan role
+    /**
+     * Mengembalikan URL redirect yang sesuai dengan role user.
+     * Hanya dipanggil setelah login berhasil (role sudah tervalidasi).
+     */
     getRedirectUrl() {
-      const role = this.user?.roles?.toLowerCase()
-      
+      const role = this.user?.roles?.toLowerCase?.() ?? "";
+
       switch (role) {
-        case 'keeper':
-          return '/merchant-overview'
-        case 'manager':
-          return '/overview'
+        case "keeper":
+          return "/merchant-overview";
+        case "manager":
+          return "/overview";
         default:
-          return '/overview' // Default fallback
+          // Seharusnya tidak sampai sini karena role sudah divalidasi saat login.
+          // Fallback aman ke login page.
+          return "/";
       }
     },
 
-    // Method untuk cek apakah user punya akses ke route tertentu
+    /**
+     * Mengecek apakah user punya akses ke route yang memerlukan requiredRole.
+     * Menggunakan role hierarchy: manager (2) > keeper (1).
+     */
     hasAccess(requiredRole) {
-      const userRole = this.user?.roles?.toLowerCase()
-      
-      // Role hierarchy (dari yang paling tinggi ke rendah)
+      const userRole = this.user?.roles?.toLowerCase?.() ?? "";
+
       const roleHierarchy = {
-        'manager': 2,
-        'keeper': 1
-      }
-      
-      const userLevel = roleHierarchy[userRole] || 0
-      const requiredLevel = roleHierarchy[requiredRole] || 0
-      
-      return userLevel >= requiredLevel
+        manager: 2,
+        keeper: 1,
+      };
+
+      const userLevel = roleHierarchy[userRole] ?? 0;
+      const requiredLevel = roleHierarchy[requiredRole?.toLowerCase?.()] ?? 0;
+
+      return userLevel > 0 && userLevel >= requiredLevel;
     },
 
-    // Method untuk mendapatkan merchant data dari localStorage
     getMerchantData() {
       if (this.merchantData) {
-        return this.merchantData
+        return this.merchantData;
       }
-      
-      const storedData = localStorage.getItem('merchant_data')
+
+      const storedData = localStorage.getItem("merchant_data");
       if (storedData) {
-        this.merchantData = JSON.parse(storedData)
-        return this.merchantData
+        try {
+          this.merchantData = JSON.parse(storedData);
+          return this.merchantData;
+        } catch {
+          return null;
+        }
       }
-      
-      return null
+
+      return null;
     },
 
-    // Method untuk refresh merchant data
     async refreshMerchantData() {
-      if (this.user?.roles?.toLowerCase() === 'keeper') {
-        await this.fetchAndStoreMerchantData()
+      if (this.user?.roles?.toLowerCase?.() === "keeper") {
+        await this.fetchAndStoreMerchantData();
       }
-    }
-  }
-}) 
+    },
+  },
+});
