@@ -101,25 +101,26 @@ export const useAuthStore = defineStore("auth", {
         localStorage.setItem("auth_token", token);
         localStorage.setItem("user", JSON.stringify(this.user));
 
-        // Validasi: pastikan user punya role yang valid sebelum diteruskan
-        const validRoles = ["manager", "keeper"];
-        if (!validRoles.includes(normalizedRole)) {
-          // Reset auth state — jangan biarkan user masuk dengan role kosong
+        // Validasi: pastikan user punya role (tidak boleh kosong).
+        // Role TIDAK di-hardcode — role apapun yang dibuat admin di backend bisa login.
+        if (!normalizedRole) {
+          // Reset auth state — jangan biarkan user masuk tanpa role
           this.user = null;
           this.token = null;
           this.isAuthenticated = false;
           localStorage.removeItem("auth_token");
           localStorage.removeItem("user");
 
-          const roleDisplay = normalizedRole ? `"${normalizedRole}"` : "kosong";
           throw new Error(
-            `Akun ini belum memiliki role yang valid (role: ${roleDisplay}). ` +
-              `Hubungi administrator untuk mendapatkan akses.`,
+            "Akun ini belum memiliki role. " +
+              "Hubungi administrator untuk mendapatkan akses.",
           );
         }
 
-        // Jika user adalah keeper, fetch dan simpan data merchant
-        if (normalizedRole === "keeper") {
+        // Jika user adalah keeper (atau role apapun yang perlu merchant data),
+        // fetch dan simpan data merchant. Gunakan nama role yang fleksibel.
+        const keeperLikeRoles = ["keeper"];
+        if (keeperLikeRoles.includes(normalizedRole)) {
           await this.fetchAndStoreMerchantData();
         }
 
@@ -247,39 +248,56 @@ export const useAuthStore = defineStore("auth", {
 
     /**
      * Mengembalikan URL redirect yang sesuai dengan role user.
-     * Hanya dipanggil setelah login berhasil (role sudah tervalidasi).
+     * Role bersifat dinamis — mapping diatur di sini, bukan di-hardcode di seluruh app.
+     *
+     * Untuk role baru yang belum ada mapping-nya, fallback ke /overview.
+     * Middleware akan menangani akses-kontrol lebih lanjut.
      */
     getRedirectUrl() {
       const role = this.user?.roles?.toLowerCase?.() ?? "";
 
-      switch (role) {
-        case "keeper":
-          return "/merchant-overview";
-        case "manager":
-          return "/overview";
-        default:
-          // Seharusnya tidak sampai sini karena role sudah divalidasi saat login.
-          // Fallback aman ke login page.
-          return "/";
-      }
+      // Mapping role → halaman utama
+      // Tambahkan entry baru di sini saat admin menambah role baru yang butuh
+      // halaman utama berbeda.
+      const roleRedirectMap = {
+        keeper: "/merchant-overview",
+        manager: "/overview",
+      };
+
+      return roleRedirectMap[role] ?? "/overview";
     },
 
     /**
      * Mengecek apakah user punya akses ke route yang memerlukan requiredRole.
-     * Menggunakan role hierarchy: manager (2) > keeper (1).
+     *
+     * Pertama cek exact match (role dinamis bekerja langsung),
+     * lalu fallback ke hierarchy untuk kasus manager mengakses route keeper.
      */
     hasAccess(requiredRole) {
       const userRole = this.user?.roles?.toLowerCase?.() ?? "";
+      const required = requiredRole?.toLowerCase?.() ?? "";
 
+      if (!userRole || !required) return false;
+
+      // Exact match — semua role yang tidak ada di hierarchy tetap bisa match
+      if (userRole === required) return true;
+
+      // Hierarchy untuk backward-compat: manager bisa akses semua route keeper
+      // Tambahkan pair baru di sini jika ada role baru yang punya hierarki serupa.
       const roleHierarchy = {
         manager: 2,
         keeper: 1,
       };
 
       const userLevel = roleHierarchy[userRole] ?? 0;
-      const requiredLevel = roleHierarchy[requiredRole?.toLowerCase?.()] ?? 0;
+      const requiredLevel = roleHierarchy[required] ?? 0;
 
-      return userLevel > 0 && userLevel >= requiredLevel;
+      // Hanya pakai hierarchy jika kedua role ada di map
+      if (userLevel > 0 && requiredLevel > 0) {
+        return userLevel >= requiredLevel;
+      }
+
+      return false;
     },
 
     getMerchantData() {
@@ -301,7 +319,11 @@ export const useAuthStore = defineStore("auth", {
     },
 
     async refreshMerchantData() {
-      if (this.user?.roles?.toLowerCase?.() === "keeper") {
+      // Refresh merchant data untuk semua role yang perlu data merchant.
+      // Sama dengan daftar keeperLikeRoles di login().
+      const keeperLikeRoles = ["keeper"];
+      const role = this.user?.roles?.toLowerCase?.() ?? "";
+      if (keeperLikeRoles.includes(role)) {
         await this.fetchAndStoreMerchantData();
       }
     },

@@ -7,17 +7,34 @@ import { useAuthStore } from "@/stores/auth";
  * 1. Cek apakah user sudah login (checkAuth dari localStorage).
  * 2. Jika route memerlukan auth:
  *    a. Belum login → redirect ke /
- *    b. Sudah login tapi role tidak cocok → redirect ke URL yang sesuai role
+ *    b. Sudah login tapi role tidak cocok → redirect ke URL sesuai role
  *    c. Sudah login dan role cocok → lanjutkan
  * 3. Jika route tidak memerlukan auth (misal: login page):
  *    a. Sudah login → redirect ke dashboard sesuai role
  *    b. Belum login → lanjutkan
+ *
+ * Catatan penting — Hindari redirect loop:
+ * Jika getRedirectUrl() mengembalikan URL yang sama dengan tujuan saat ini
+ * (bisa terjadi untuk role baru yang belum ada mapping-nya), jangan logout
+ * langsung — alihkan ke /no-access agar user tetap bisa melihat halaman
+ * yang menjelaskan situasinya.
  */
 export async function authMiddleware(to, from, next) {
   const authStore = useAuthStore();
 
   // Cek apakah user sudah login via localStorage
   const isAuthenticated = await authStore.checkAuth();
+
+  // Route /no-access hanya bisa diakses oleh user yang sudah login.
+  // Jika belum login, redirect ke halaman login.
+  if (to.path === "/no-access") {
+    if (!isAuthenticated) {
+      next("/");
+    } else {
+      next();
+    }
+    return;
+  }
 
   if (to.meta.requiresAuth) {
     // Belum login → ke halaman login
@@ -36,14 +53,15 @@ export async function authMiddleware(to, from, next) {
       );
 
       if (!hasAccess) {
-        // Tidak punya akses → redirect ke halaman default sesuai role
+        // Tidak punya akses → cari halaman yang sesuai dengan role user
         const redirectUrl = authStore.getRedirectUrl();
 
-        // Hindari redirect loop: kalau redirectUrl sama dengan tujuan saat ini,
-        // logout dan paksa ke login page.
+        // Hindari redirect loop:
+        // Jika redirectUrl sama dengan tujuan saat ini, artinya role user
+        // tidak punya halaman yang cocok (role baru / belum di-mapping).
+        // Alihkan ke /no-access alih-alih logout langsung.
         if (redirectUrl === to.path || redirectUrl === to.fullPath) {
-          await authStore.logout();
-          next("/");
+          next("/no-access");
           return;
         }
 
