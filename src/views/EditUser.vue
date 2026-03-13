@@ -14,7 +14,7 @@
         <div class="flex items-center justify-between w-full">
           <div class="group relative flex size-[100px] rounded-2xl overflow-hidden items-center justify-center bg-monday-background">
             <img
-              :src="photoPreview || userData.photo || '/src/assets/images/photos/photos-2.png'"
+              :src="photoPreview || userData.photo || '/assets/images/photos/photos-2.png'"
               class="size-full object-contain"
               alt="user photo"
             />
@@ -40,7 +40,7 @@
         <!-- Full Name Input -->
         <label class="group relative">
           <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-            <img src="/src/assets/images/icons/profile-grey.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/profile-grey.svg" class="flex size-6 shrink-0" alt="icon">
           </div>
           <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
             Full Name
@@ -56,7 +56,7 @@
         <!-- Phone Number Input -->
         <label class="group relative">
           <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-            <img src="/src/assets/images/icons/call-grey.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/call-grey.svg" class="flex size-6 shrink-0" alt="icon">
           </div>
           <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
             Phone Number
@@ -72,7 +72,7 @@
         <!-- Email Address Input -->
         <label class="group relative">
           <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-            <img src="/src/assets/images/icons/sms-grey.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/sms-grey.svg" class="flex size-6 shrink-0" alt="icon">
           </div>
           <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
             Email Address
@@ -88,7 +88,7 @@
         <!-- Password Input -->
         <label class="group relative">
           <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-            <img src="/src/assets/images/icons/key-grey.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/key-grey.svg" class="flex size-6 shrink-0" alt="icon">
           </div>
           <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
             Password (Optional)
@@ -104,7 +104,7 @@
         <!-- Password Confirmation Input -->
         <label class="group relative" v-if="formData.password">
           <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-            <img src="/src/assets/images/icons/key-grey.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/key-grey.svg" class="flex size-6 shrink-0" alt="icon">
           </div>
           <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
             Password Confirmation
@@ -133,23 +133,23 @@
         <p class="font-semibold">Quick Guide to Edit User</p>
         <ul class="flex flex-col gap-4">
           <li class="flex gap-[6px]">
-            <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
             <p class="font-medium leading-[140%]">Assign a role if necessary to ensure proper access lorem ipsum</p>
           </li>
           <li class="flex gap-[6px]">
-            <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
             <p class="font-medium leading-[140%]">Thoroughly review all details before creating to ensure accuracy and prevent potential errors.</p>
           </li>
           <li class="flex gap-[6px]">
-            <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
             <p class="font-medium leading-[140%]">Ensure Email and Phone Number Are Correct text lorem ipsum</p>
           </li>
           <li class="flex gap-[6px]">
-            <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
             <p class="font-medium leading-[140%]">Create an initial password to ensure secure user access while maintaining account protection</p>
           </li>
           <li class="flex gap-[6px]">
-            <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
             <p class="font-medium leading-[140%]">Enter user details accurately and dummy completely to ensure proper lorem ipsum</p>
           </li>
         </ul>

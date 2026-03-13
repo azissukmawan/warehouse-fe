@@ -7,7 +7,7 @@
       
       <!-- Loading State -->
       <div v-if="isLoading" class="flex flex-col items-center justify-center rounded-3xl p-[18px] gap-6 bg-white">
-        <img src="/src/assets/images/icons/loading.svg" class="size-[52px] animate-spin" alt="loading">
+        <img src="/assets/images/icons/loading.svg" class="size-[52px] animate-spin" alt="loading">
         <p class="font-semibold text-monday-gray">Loading merchant details...</p>
       </div>
       
@@ -19,26 +19,26 @@
         <div class="flex flex-col gap-2 flex-1">
           <p class="font-semibold text-xl">{{ merchant.name }}</p>
           <p class="flex items-center gap-1 font-medium text-lg text-monday-gray">
-            <img src="/src/assets/images/icons/call-grey.svg" class="size-6 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/call-grey.svg" class="size-6 flex shrink-0" alt="icon">
             <span>{{ merchant.phone }}</span>
           </p>
           <p class="flex items-center gap-1 font-medium text-monday-gray">
-            <img src="/src/assets/images/icons/location-grey.svg" class="size-6 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/location-grey.svg" class="size-6 flex shrink-0" alt="icon">
             <span>{{ merchant.address }}</span>
           </p>
         </div>
         <div class="flex flex-col gap-2 flex-1">
           <p class="flex items-center gap-1 font-medium text-monday-gray">
-            <img src="/src/assets/images/icons/user-grey.svg" class="size-4 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/user-grey.svg" class="size-4 flex shrink-0" alt="icon">
             <span>Keeper Name:</span>
           </p>
           <div v-if="isLoadingKeeper" class="flex items-center gap-2">
-            <img src="/src/assets/images/icons/loading.svg" class="size-4 animate-spin" alt="loading">
+            <img src="/assets/images/icons/loading.svg" class="size-4 animate-spin" alt="loading">
             <span class="font-semibold text-lg">Loading keeper...</span>
           </div>
           <div v-else-if="merchant.keeper" class="flex items-center gap-2">
             <div class="flex size-8 rounded-full bg-monday-background items-center justify-center overflow-hidden">
-              <img :src="merchant.keeper.photo || '/src/assets/images/icons/profile-circle-grey.svg'" class="size-full object-cover" :alt="merchant.keeper.name">
+              <img :src="merchant.keeper.photo || '/assets/images/icons/profile-circle-grey.svg'" class="size-full object-cover" :alt="merchant.keeper.name">
             </div>
             <div class="flex flex-col">
               <p class="font-semibold text-lg">{{ merchant.keeper.name }}</p>
@@ -56,14 +56,14 @@
         <div class="flex items-center justify-between px-[18px]">
           <div class="flex flex-col gap-[6px]">
             <p class="flex items-center gap-[6px]">
-              <img src="/src/assets/images/icons/buildings-2-black.svg" class="size-6 flex shrink-0" alt="icon">
+              <img src="/assets/images/icons/buildings-2-black.svg" class="size-6 flex shrink-0" alt="icon">
               <span class="font-semibold text-2xl">{{ products.length }} Total Products</span>
             </p>
             <p class="font-semibold text-lg text-monday-gray">View and update your Product Warehouses list here.</p>
           </div>
           <router-link :to="`/assign-merchant-product/${merchant.id}`" class="btn btn-primary font-semibold">
             Assign a Products
-            <img src="/src/assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
           </router-link>
         </div>
         <hr class="border-monday-border">
@@ -74,7 +74,7 @@
           
           <!-- Loading State for Products -->
           <div v-if="isLoadingProducts" class="flex flex-col items-center justify-center rounded-[20px] border-dashed border-2 border-monday-gray gap-6">
-            <img src="/src/assets/images/icons/loading.svg" class="size-[52px] animate-spin" alt="loading">
+            <img src="/assets/images/icons/loading.svg" class="size-[52px] animate-spin" alt="loading">
             <p class="font-semibold text-monday-gray">Loading products...</p>
           </div>
           
@@ -91,7 +91,7 @@
                   </div>
                 </div>
                 <div class="flex items-center gap-[6px] w-[154px] shrink-0">
-                  <img src="/src/assets/images/icons/box-black.svg" class="size-6 flex shrink-0" alt="icon">
+                  <img src="/assets/images/icons/box-black.svg" class="size-6 flex shrink-0" alt="icon">
                   <p class="font-semibold text-lg text-nowrap w-[124px] truncate">{{ product.stock }} Stock</p>
                 </div>
                 <div class="flex items-center gap-[6px] w-[154px] shrink-0">
@@ -133,7 +133,7 @@
             </div>
           </div>
           <div v-else id="Empty-State" class="flex flex-col flex-1 items-center justify-center rounded-[20px] border-dashed border-2 border-monday-gray gap-6">
-            <img src="/src/assets/images/icons/document-text-grey.svg" class="size-[52px]" alt="icon">
+            <img src="/assets/images/icons/document-text-grey.svg" class="size-[52px]" alt="icon">
             <p class="font-semibold text-monday-gray">Oops, it looks like there's no data yet.</p>
           </div>
           
@@ -171,7 +171,7 @@
           <div class="modal-header flex items-center justify-between">
             <p class="font-semibold text-xl">Product Details</p>
             <button @click="closeModal" class="flex size-14 rounded-full items-center justify-center bg-monday-gray-background">
-              <img src="/src/assets/images/icons/close-circle-black.svg" class="size-6" alt="icon">
+              <img src="/assets/images/icons/close-circle-black.svg" class="size-6" alt="icon">
             </button>
           </div>
           <div v-if="selectedProduct" class="modal-content flex flex-col rounded-3xl border border-monday-border p-4 gap-5">
@@ -358,10 +358,10 @@ export default {
             product_price: 120500,
             stock: 320,
             product_category: 'Cosmetics',
-            product_photo: '/src/assets/images/thumbnails/magic-brush.png',
+            product_photo: '/assets/images/thumbnails/magic-brush.png',
             product_about: 'Magic Brush adalah kuas make up multifungsi untuk hasil riasan lebih halus dan merata.',
             warehouse_name: 'Warehouse 1',
-            warehouse_photo: '/src/assets/images/thumbnails/warehouse-1.png'
+            warehouse_photo: '/assets/images/thumbnails/warehouse-1.png'
           },
           {
             id: 2,
@@ -369,10 +369,10 @@ export default {
             product_price: 120500,
             stock: 320,
             product_category: 'Cosmetics',
-            product_photo: '/src/assets/images/thumbnails/lipstick.png',
+            product_photo: '/assets/images/thumbnails/lipstick.png',
             product_about: 'Lipstick dengan warna tahan lama dan melembabkan bibir.',
             warehouse_name: 'Warehouse 2',
-            warehouse_photo: '/src/assets/images/thumbnails/warehouse-2.png'
+            warehouse_photo: '/assets/images/thumbnails/warehouse-2.png'
           }
         ]
       } finally {
@@ -396,10 +396,10 @@ export default {
     
     getCategoryIcon(category) {
       const icons = {
-        'Cosmetics': '/src/assets/images/icons/Makeup-black.svg',
-        'Wristwatch': '/src/assets/images/icons/watch-black.svg',
-        'Printer': '/src/assets/images/icons/printer-black.svg',
-        'default': '/src/assets/images/icons/box-black.svg'
+        'Cosmetics': '/assets/images/icons/Makeup-black.svg',
+        'Wristwatch': '/assets/images/icons/watch-black.svg',
+        'Printer': '/assets/images/icons/printer-black.svg',
+        'default': '/assets/images/icons/box-black.svg'
       }
       return icons[category] || icons.default
     },
@@ -409,7 +409,7 @@ export default {
       if (photo) {
         return photo
       }
-      return '/src/assets/images/icons/shop-black.svg'
+      return '/assets/images/icons/shop-black.svg'
     },
     
     getProductImage(photo) {
@@ -417,7 +417,7 @@ export default {
       if (photo) {
         return photo
       }
-      return '/src/assets/images/icons/bag-black.svg'
+      return '/assets/images/icons/bag-black.svg'
     },
     
     getWarehouseImage(photo) {
@@ -425,7 +425,7 @@ export default {
       if (photo) {
         return photo
       }
-      return '/src/assets/images/icons/buildings-2-black.svg'
+      return '/assets/images/icons/buildings-2-black.svg'
     }
   }
 }

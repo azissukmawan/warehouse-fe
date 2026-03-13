@@ -92,7 +92,7 @@ export const useAuthStore = defineStore("auth", {
           email: user.email,
           roles: normalizedRole, // always a clean lowercase string
           name: user.name || user.email?.split("@")[0] || "User",
-          avatar: "/src/assets/images/photos/photos-1.png",
+          avatar: "/assets/images/photos/photos-1.png",
         };
         this.token = token;
         this.isAuthenticated = true;
@@ -233,7 +233,7 @@ export const useAuthStore = defineStore("auth", {
             name: this.user.name || response.data.email?.split("@")[0],
             roles: this.user.roles, // Pertahankan role dari login (sudah normalized)
             avatar:
-              response.data.photo || "/src/assets/images/photos/photos-1.png",
+              response.data.photo || "/assets/images/photos/photos-1.png",
           };
 
           localStorage.setItem("user", JSON.stringify(this.user));

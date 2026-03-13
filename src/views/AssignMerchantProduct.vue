@@ -12,7 +12,7 @@
             
             <!-- Loading State -->
             <div v-if="isLoadingMerchant" class="flex flex-col items-center justify-center rounded-3xl p-[18px] gap-6 bg-white">
-              <img src="/src/assets/images/icons/loading.svg" class="size-[52px] animate-spin" alt="loading">
+              <img src="/assets/images/icons/loading.svg" class="size-[52px] animate-spin" alt="loading">
               <p class="font-semibold text-monday-gray">Loading merchant details...</p>
             </div>
             

@@ -8,14 +8,14 @@
           <div id="Header" class="flex items-center justify-between px-[18px]">
             <div class="flex flex-col gap-[6px]">
               <p class="flex items-center gap-[6px]">
-                <img src="/src/assets/images/icons/note-2-black.svg" class="size-6 flex shrink-0" alt="icon">
+                <img src="/assets/images/icons/note-2-black.svg" class="size-6 flex shrink-0" alt="icon">
                 <span class="font-semibold text-2xl">{{ categories.length }} Total Category</span>
               </p>
               <p class="font-semibold text-lg text-monday-gray">View and update your Category list here.</p>
             </div>
             <router-link to="/categories/add" class="btn btn-primary font-semibold">
               Add New
-              <img src="/src/assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
             </router-link>
           </div>
           <hr class="border-monday-border">
@@ -32,7 +32,7 @@
             
             <!-- Error State -->
             <div v-else-if="error" class="flex flex-col flex-1 items-center justify-center rounded-[20px] border-dashed border-2 border-red-300 gap-6">
-              <img src="/src/assets/images/icons/close-circle-black.svg" class="size-[52px]" alt="icon">
+              <img src="/assets/images/icons/close-circle-black.svg" class="size-[52px]" alt="icon">
               <p class="font-semibold text-red-600">{{ error }}</p>
               <button @click="fetchCategories" class="btn btn-primary font-semibold">
                 Coba Lagi
@@ -41,7 +41,7 @@
             
             <!-- Empty State -->
             <div v-else-if="categories.length === 0" class="flex flex-col flex-1 items-center justify-center rounded-[20px] border-dashed border-2 border-monday-gray gap-6">
-              <img src="/src/assets/images/icons/document-text-grey.svg" class="size-[52px]" alt="icon">
+              <img src="/assets/images/icons/document-text-grey.svg" class="size-[52px]" alt="icon">
               <p class="font-semibold text-monday-gray">Oops, it looks like there's no data yet.</p>
             </div>
             
@@ -61,7 +61,7 @@
                     </div>
                   </div>
                   <div class="flex items-center gap-2 w-full">
-                    <img src="/src/assets/images/icons/bag-black.svg" class="size-6 flex shrink-0" alt="icon">
+                    <img src="/assets/images/icons/bag-black.svg" class="size-6 flex shrink-0" alt="icon">
                     <p class="font-semibold text-lg text-nowrap">{{ formatNumber(category.count_product) }} Products</p>
                     <!-- Status badge -->
                     <div 
@@ -69,7 +69,7 @@
                       class="flex items-center gap-1 px-2 py-1 rounded-full"
                     >
                       <img 
-                        :src="getCategoryStatus(category).status === 'protected' ? '/src/assets/images/icons/notification-black.svg' : '/src/assets/images/icons/tick-square-blue.svg'" 
+                        :src="getCategoryStatus(category).status === 'protected' ? '/assets/images/icons/notification-black.svg' : '/assets/images/icons/tick-square-blue.svg'" 
                         class="size-4" 
                         alt="status"
                       >
@@ -83,7 +83,7 @@
                       :to="`/categories/edit/${category.id}`" 
                       class="btn btn-black min-w-[130px] font-semibold"
                     >
-                      <img src="/src/assets/images/icons/edit-white.svg" class="flex size-6 shrink-0" alt="icon">
+                      <img src="/assets/images/icons/edit-white.svg" class="flex size-6 shrink-0" alt="icon">
                       Edit
                     </router-link>
                     <button 
@@ -92,7 +92,7 @@
                       :title="getCategoryStatus(category).message"
                       class="btn btn-red-opacity min-w-[130px] font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <img src="/src/assets/images/icons/trash-red.svg" class="flex size-6 shrink-0" alt="icon">
+                      <img src="/assets/images/icons/trash-red.svg" class="flex size-6 shrink-0" alt="icon">
                       Delete
                     </button>
                   </div>
@@ -200,13 +200,13 @@
         
         // Otherwise, use the icon mapping for local icons
         const iconMap = {
-          'milk-black': '/src/assets/images/icons/milk-black.svg',
-          'Makeup-black': '/src/assets/images/icons/Makeup-black.svg',
-          'watch-black': '/src/assets/images/icons/watch-black.svg',
-          'printer-black': '/src/assets/images/icons/printer-black.svg',
-          'glass-black': '/src/assets/images/icons/glass-black.svg'
+          'milk-black': '/assets/images/icons/milk-black.svg',
+          'Makeup-black': '/assets/images/icons/Makeup-black.svg',
+          'watch-black': '/assets/images/icons/watch-black.svg',
+          'printer-black': '/assets/images/icons/printer-black.svg',
+          'glass-black': '/assets/images/icons/glass-black.svg'
         }
-        return iconMap[iconName] || '/src/assets/images/icons/note-2-black.svg'
+        return iconMap[iconName] || '/assets/images/icons/note-2-black.svg'
       },
       formatNumber(num) {
         return new Intl.NumberFormat('en-US').format(num)

@@ -12,7 +12,7 @@
         <!-- User Selection -->
         <label class="group relative rounded-3xl border-[1.5px] border-monday-border focus-within:border-monday-black transition-300 overflow-hidden">
           <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-            <img src="/src/assets/images/icons/profile-circle-grey.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/profile-circle-grey.svg" class="flex size-6 shrink-0" alt="icon">
           </div>
           <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:invalid]:top-[36px] group-focus-within:top-[25px] transition-300">
             Select User Id
@@ -32,14 +32,14 @@
               {{ user.name }}
             </option>
           </select>
-          <img src="/src/assets/images/icons/arrow-down-grey.svg" class="absolute transform -translate-y-1/2 top-1/2 right-6 size-6" alt="icon">
+          <img src="/assets/images/icons/arrow-down-grey.svg" class="absolute transform -translate-y-1/2 top-1/2 right-6 size-6" alt="icon">
         </label>
         <p v-if="errors.userId" class="mt-1 text-sm text-red-600">{{ errors.userId }}</p>
 
         <!-- Role Selection -->
         <label class="group relative rounded-3xl border-[1.5px] border-monday-border focus-within:border-monday-black transition-300 overflow-hidden">
           <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-            <img src="/src/assets/images/icons/profile-tick-grey.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/profile-tick-grey.svg" class="flex size-6 shrink-0" alt="icon">
           </div>
           <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:invalid]:top-[36px] group-focus-within:top-[25px] transition-300">
             Select Role ID
@@ -59,7 +59,7 @@
               {{ role.name }}
             </option>
           </select>
-          <img src="/src/assets/images/icons/arrow-down-grey.svg" class="absolute transform -translate-y-1/2 top-1/2 right-6 size-6" alt="icon">
+          <img src="/assets/images/icons/arrow-down-grey.svg" class="absolute transform -translate-y-1/2 top-1/2 right-6 size-6" alt="icon">
         </label>
         <p v-if="errors.roleId" class="mt-1 text-sm text-red-600">{{ errors.roleId }}</p>
 
@@ -97,23 +97,23 @@
         <p class="font-semibold">Quick Guide to Assign Role To User</p>
         <ul class="flex flex-col gap-4">
           <li class="flex gap-[6px]">
-            <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
             <p class="font-medium leading-[140%]">Choose an available username from the list to ensure uniqueness</p>
           </li>
           <li class="flex gap-[6px]">
-            <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
             <p class="font-medium leading-[140%]">Choose the most suitable role as needed to ensure proper access Lorem Ipsum</p>
           </li>
           <li class="flex gap-[6px]">
-            <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
             <p class="font-medium leading-[140%]">Review All Details Carefully Before ipsum Creating lorem dummy text</p>
           </li>
           <li class="flex gap-[6px]">
-            <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
             <p class="font-medium leading-[140%]">Make Sure Not to Assign the Wrong Role or Permissions lorem text ipsum</p>
           </li>
           <li class="flex gap-[6px]">
-            <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
             <p class="font-medium leading-[140%]">Ensure the Role is Assigned to the Right Person lorem ipsum simply</p>
           </li>
         </ul>

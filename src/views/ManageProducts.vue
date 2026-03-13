@@ -199,13 +199,13 @@ export default {
 
     const getCategoryIcon = (category) => {
       const iconMap = {
-        Cosmetics: '/src/assets/images/icons/Makeup-black.svg',
-        Wristwatch: '/src/assets/images/icons/watch-black.svg',
-        Printer: '/src/assets/images/icons/printer-black.svg',
-        Electronics: '/src/assets/images/icons/glass-black.svg',
-        Fashion: '/src/assets/images/icons/bag-black.svg',
+        Cosmetics: '/assets/images/icons/Makeup-black.svg',
+        Wristwatch: '/assets/images/icons/watch-black.svg',
+        Printer: '/assets/images/icons/printer-black.svg',
+        Electronics: '/assets/images/icons/glass-black.svg',
+        Fashion: '/assets/images/icons/bag-black.svg',
       };
-      return iconMap[category] || '/src/assets/images/icons/note-2-black.svg';
+      return iconMap[category] || '/assets/images/icons/note-2-black.svg';
     };
 
     // Pagination functions

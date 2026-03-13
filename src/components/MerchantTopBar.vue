@@ -32,7 +32,7 @@
           <div v-if="userLoading" class="flex size-full items-center justify-center bg-monday-gray-background">
             <img src="@/assets/images/icons/loading.svg" class="size-6 animate-spin" alt="loading">
           </div>
-          <img v-else :src="currentUser?.avatar || '/src/assets/images/photos/photos-1.png'" class="size-full object-cover" alt="photo">
+          <img v-else :src="currentUser?.avatar || '/assets/images/photos/photos-1.png'" class="size-full object-cover" alt="photo">
         </div>
         <div class="flex flex-col gap-1 min-w-[120px] max-w-[160px] w-fit">
           <div v-if="userLoading" class="flex flex-col gap-1">

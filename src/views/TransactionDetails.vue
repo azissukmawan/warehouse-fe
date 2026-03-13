@@ -215,8 +215,8 @@ const transactionProducts = ref([
     price: 'Rp 120.500',
     quantity: 2,
     category: 'Cosmetics',
-    categoryIcon: '/src/assets/images/icons/Makeup-black.svg',
-    image: '/src/assets/images/thumbnails/magic-brush.png',
+    categoryIcon: '/assets/images/icons/Makeup-black.svg',
+    image: '/assets/images/thumbnails/magic-brush.png',
     subtotal: 'Rp 384.000'
   },
   {
@@ -225,8 +225,8 @@ const transactionProducts = ref([
     price: 'Rp 120.500',
     quantity: 2,
     category: 'Cosmetics',
-    categoryIcon: '/src/assets/images/icons/Makeup-black.svg',
-    image: '/src/assets/images/thumbnails/magic-brush.png',
+    categoryIcon: '/assets/images/icons/Makeup-black.svg',
+    image: '/assets/images/thumbnails/magic-brush.png',
     subtotal: 'Rp 384.000'
   },
   {
@@ -235,8 +235,8 @@ const transactionProducts = ref([
     price: 'Rp 120.500',
     quantity: 2,
     category: 'Cosmetics',
-    categoryIcon: '/src/assets/images/icons/Makeup-black.svg',
-    image: '/src/assets/images/thumbnails/magic-brush.png',
+    categoryIcon: '/assets/images/icons/Makeup-black.svg',
+    image: '/assets/images/thumbnails/magic-brush.png',
     subtotal: 'Rp 384.000'
   }
 ])

@@ -13,7 +13,7 @@
               <div class="flex flex-col gap-2 flex-1">
                 <p class="font-semibold text-lg">{{ warehouse.name }}</p>
                 <p class="flex items-center gap-1 font-medium text-lg text-monday-gray">
-                  <img src="/src/assets/images/icons/call-grey.svg" class="size-6 flex shrink-0" alt="icon">
+                  <img src="/assets/images/icons/call-grey.svg" class="size-6 flex shrink-0" alt="icon">
                   <span>{{ warehouse.phone }}</span>
                 </p>
               </div>
@@ -27,7 +27,7 @@
             <!-- Product Selection -->
             <label class="group relative rounded-3xl border-[1.5px] border-monday-border focus-within:border-monday-black transition-300 overflow-hidden">
               <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-                <img src="/src/assets/images/icons/barcode-black.svg" class="flex size-6 shrink-0" alt="icon">
+                <img src="/assets/images/icons/barcode-black.svg" class="flex size-6 shrink-0" alt="icon">
               </div>
               <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:invalid]:top-[36px] group-focus-within:top-[25px] transition-300">
                 Product ID
@@ -47,13 +47,13 @@
                   {{ product.name }}
                 </option>
               </select>
-              <img src="/src/assets/images/icons/arrow-down-grey.svg" class="absolute transform -translate-y-1/2 top-1/2 right-6 size-6" alt="icon">
+              <img src="/assets/images/icons/arrow-down-grey.svg" class="absolute transform -translate-y-1/2 top-1/2 right-6 size-6" alt="icon">
             </label>
 
             <!-- Stock Input -->
             <label class="group relative">
               <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-                <img src="/src/assets/images/icons/box-grey.svg" class="flex size-6 shrink-0" alt="icon">
+                <img src="/assets/images/icons/box-grey.svg" class="flex size-6 shrink-0" alt="icon">
               </div>
               <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
                 Type a Stock
@@ -86,23 +86,23 @@
           <p class="font-semibold">Quick Guide to Assign New Product</p>
           <ul class="flex flex-col gap-4">
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Make Sure the Warehouse Details Are Correct Lorem Ipsum is Simply Text</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Enter the Product Details Correctly and Accurately Lorem Ipsum Color amet</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Specify the Stock Quantity to Be Added Accurately is dummy text</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Review the Entered Information for Accuracy Lorem Ipsum Dummy</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Click "Assign Now" to complete the process Lorem Ipsum </p>
             </li>
           </ul>
@@ -180,7 +180,7 @@ export default {
       if (photo) {
         return photo
       }
-      return '/src/assets/images/icons/buildings-2-black.svg'
+      return '/assets/images/icons/buildings-2-black.svg'
     },
     onProductChange() {
       // You can add additional logic here when product selection changes

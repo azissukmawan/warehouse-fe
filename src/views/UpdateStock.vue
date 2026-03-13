@@ -17,7 +17,7 @@
                 <div class="flex flex-col gap-2 flex-1">
                   <p class="font-semibold text-lg">{{ warehouse.name }}</p>
                   <p class="flex items-center gap-1 font-medium text-lg text-monday-gray">
-                    <img src="/src/assets/images/icons/call-grey.svg" class="size-6 flex shrink-0" alt="icon">
+                    <img src="/assets/images/icons/call-grey.svg" class="size-6 flex shrink-0" alt="icon">
                     <span>{{ warehouse.phone }}</span>
                   </p>
                 </div>
@@ -37,7 +37,7 @@
                   </p>
                 </div>
                 <div class="flex items-center gap-[6px] shrink-0">
-                  <img src="/src/assets/images/icons/box-black.svg" class="size-6 flex shrink-0" alt="icon">
+                  <img src="/assets/images/icons/box-black.svg" class="size-6 flex shrink-0" alt="icon">
                   <p class="font-semibold text-lg text-nowrap">{{ product.currentStock }} Stock</p>
                 </div>
               </div>
@@ -49,7 +49,7 @@
             <!-- Stock Input -->
             <label class="group relative">
               <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-                <img src="/src/assets/images/icons/box-grey.svg" class="flex size-6 shrink-0" alt="icon">
+                <img src="/assets/images/icons/box-grey.svg" class="flex size-6 shrink-0" alt="icon">
               </div>
               <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
                 Type a Stock
@@ -87,13 +87,13 @@
             <!-- Danger Zone -->
             <div class="border-t border-red-200 pt-6 mt-6">
               <div class="flex items-center gap-2 mb-4">
-                <img src="/src/assets/images/icons/trash-red.svg" class="size-6" alt="danger">
+                <img src="/assets/images/icons/trash-red.svg" class="size-6" alt="danger">
                 <h3 class="text-red-600 font-semibold text-lg">Danger Zone</h3>
               </div>
               <div class="bg-red-50 border border-red-200 rounded-2xl p-6">
                 <div class="flex items-start gap-3">
                   <div class="flex size-8 rounded-full bg-red-100 items-center justify-center shrink-0">
-                    <img src="/src/assets/images/icons/notification-black.svg" class="size-5" alt="warning">
+                    <img src="/assets/images/icons/notification-black.svg" class="size-5" alt="warning">
                   </div>
                   <div class="flex flex-col gap-2">
                     <p class="font-semibold text-red-700">Remove Product from Warehouse</p>
@@ -106,7 +106,7 @@
                         @click="removeProductFromWarehouse"
                         class="btn btn-red-opacity font-semibold"
                       >
-                        <img src="/src/assets/images/icons/trash-red.svg" class="size-5" alt="delete">
+                        <img src="/assets/images/icons/trash-red.svg" class="size-5" alt="delete">
                         Remove Product
                       </button>
                       <span class="text-red-500 text-sm font-medium">Permanent Action</span>
@@ -134,23 +134,23 @@
           <p class="font-semibold">Quick Guide to Update Stock</p>
           <ul class="flex flex-col gap-4">
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Ensure the warehouse has enough capacity lorem ipsum</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Double-check product details to avoid mismatches dummy text ipsum</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Keep stock levels updated to prevent overselling lorem si ipsum text simply</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Regularly review assigned products for accuracy text dummy lorem ipsum</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Communicate with the warehouse team for smooth operations</p>
             </li>
           </ul>
@@ -240,14 +240,14 @@ export default {
       if (photo) {
         return photo
       }
-      return '/src/assets/images/icons/buildings-2-black.svg'
+      return '/assets/images/icons/buildings-2-black.svg'
     },
     getProductImage(photo) {
       // Use photo from API if available, otherwise use fallback
       if (photo) {
         return photo
       }
-      return '/src/assets/images/icons/bag-black.svg'
+      return '/assets/images/icons/bag-black.svg'
     },
     formatNumber(num) {
       return new Intl.NumberFormat('en-US').format(num)

@@ -9,7 +9,7 @@
           <div class="flex items-center justify-between w-full">
             <div class="group relative flex size-[100px] rounded-2xl overflow-hidden items-center justify-center bg-monday-background">
               <img
-                :src="imagePreview || '/src/assets/images/icons/gallery-default.svg'"
+                :src="imagePreview || '/assets/images/icons/gallery-default.svg'"
                 class="size-full object-cover"
                 alt="warehouse"
               />
@@ -33,7 +33,7 @@
           <!-- Warehouse Name Input -->
           <label class="group relative">
             <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-              <img src="/src/assets/images/icons/buildings-2-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/buildings-2-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
               Warehouse Name
@@ -50,7 +50,7 @@
           <!-- Phone Number Input -->
           <label class="group relative">
             <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-              <img src="/src/assets/images/icons/call-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/call-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
               Phone Number
@@ -67,7 +67,7 @@
           <!-- Warehouse Address Textarea -->
           <label class="flex py-4 px-6 rounded-3xl border-[1.5px] border-monday-border focus-within:border-monday-black transition-300">
             <div class="flex h-full pr-4 pt-2 border-r-[1.5px] border-monday-border">
-              <img src="/src/assets/images/icons/location-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/location-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <div class="flex flex-col gap-[6px] pl-4 w-full">
               <p class="placeholder font-medium text-monday-gray text-sm">
@@ -99,23 +99,23 @@
           <p class="font-semibold">Quick Guide to Add New Warehouse</p>
           <ul class="flex flex-col gap-4">
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Enter a Clear and Descriptive Warehouse Name Lorem Ipsum Color Mix Amet</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Provide a Valid Phone Number for Contact Lorem Ipsum is text simply</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Accurately Input the Complete Lorem Warehouse Address Lorem Ipsum</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Upload an Appropriate Warehouse Image Dummy Lorem Ipsum</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Save and Verify the Warehouse Ipsum Information text simply</p>
             </li>
           </ul>

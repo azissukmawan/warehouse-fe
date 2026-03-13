@@ -85,7 +85,7 @@
                               <div class="flex flex-col px-4 gap-5 py-5">
                   <button @click="toggleProductAssigned(index + 1)" class="flex items-center justify-between">
                     <p class="font-semibold text-lg">Product Assigned ({{ transaction.transaction_products?.length }})</p>
-                    <img :src="expandedSections.includes(index + 1) ? '/src/assets/images/icons/arrow-circle-down.svg' : '/src/assets/images/icons/arrow-circle-up.svg'" class="size-6 flex shrink-0 transition-300" alt="icon">
+                    <img :src="expandedSections.includes(index + 1) ? '/assets/images/icons/arrow-circle-down.svg' : '/assets/images/icons/arrow-circle-up.svg'" class="size-6 flex shrink-0 transition-300" alt="icon">
                   </button>
                   <div v-show="expandedSections.includes(index + 1)" class="flex flex-col gap-5">
                     <div v-for="(product, productIndex) in transaction.transaction_products" :key="product.id" class="card flex items-center justify-between gap-3">
@@ -214,7 +214,7 @@ const merchantInfo = computed(() => {
     name: 'Mazdo Merchant',
     phone: '0812923920329',
     keeper_name: 'Raratih Aqilla',
-    photo: '/src/assets/images/thumbnails/merchant-1.png'
+    photo: '/assets/images/thumbnails/merchant-1.png'
   }
 })
 
@@ -331,19 +331,19 @@ const formatNumber = (number) => {
 
 // Get category icon based on category name
 const getCategoryIcon = (categoryName) => {
-  if (!categoryName) return '/src/assets/images/icons/box-grey.svg'
+  if (!categoryName) return '/assets/images/icons/box-grey.svg'
   
   const categoryIcons = {
-    'cosmetics': '/src/assets/images/icons/Makeup-black.svg',
-    'makeup': '/src/assets/images/icons/Makeup-black.svg',
-    'electronics': '/src/assets/images/icons/smartwatch.png',
-    'fashion': '/src/assets/images/icons/bag-black.svg',
-    'food': '/src/assets/images/icons/milk-black.svg',
-    'beverages': '/src/assets/images/icons/glass-black.svg'
+    'cosmetics': '/assets/images/icons/Makeup-black.svg',
+    'makeup': '/assets/images/icons/Makeup-black.svg',
+    'electronics': '/assets/images/icons/smartwatch.png',
+    'fashion': '/assets/images/icons/bag-black.svg',
+    'food': '/assets/images/icons/milk-black.svg',
+    'beverages': '/assets/images/icons/glass-black.svg'
   }
   
   const lowerCategory = categoryName.toLowerCase()
-  return categoryIcons[lowerCategory] || '/src/assets/images/icons/box-grey.svg'
+  return categoryIcons[lowerCategory] || '/assets/images/icons/box-grey.svg'
 }
 
 const toggleProductAssigned = (sectionId) => {

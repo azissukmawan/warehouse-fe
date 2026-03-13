@@ -4,7 +4,7 @@
       <div class="flex gap-6">
         <!-- Loading State -->
         <div v-if="isLoading" class="flex flex-col items-center justify-center w-full rounded-3xl p-[18px] gap-6 bg-white">
-          <img src="/src/assets/images/icons/loading.svg" class="size-[52px] animate-spin" alt="loading">
+          <img src="/assets/images/icons/loading.svg" class="size-[52px] animate-spin" alt="loading">
           <p class="font-semibold text-monday-gray">Loading merchant details...</p>
         </div>
         
@@ -28,7 +28,7 @@
           </div>
           <label class="group relative">
             <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border ">
-              <img src="/src/assets/images/icons/shop-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/shop-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] transition-300">
               Merchant Name
@@ -37,7 +37,7 @@
           </label>
           <label class="group relative">
             <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border ">
-              <img src="/src/assets/images/icons/call-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/call-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] transition-300">
               Phone Number
@@ -46,7 +46,7 @@
           </label>
           <label class="group relative rounded-3xl border-[1.5px] border-monday-border focus-within:border-monday-black transition-300 overflow-hidden">
             <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border ">
-              <img src="/src/assets/images/icons/user-thin-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/user-thin-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] transition-300">
               Select Keeper
@@ -57,13 +57,13 @@
                 {{ keeper.name }} ({{ keeper.email }})
               </option>
             </select>
-            <img src="/src/assets/images/icons/arrow-down-grey.svg" class="absolute transform -translate-y-1/2 top-1/2 right-6 size-6" alt="icon">
+            <img src="/assets/images/icons/arrow-down-grey.svg" class="absolute transform -translate-y-1/2 top-1/2 right-6 size-6" alt="icon">
           </label>
           
           <!-- Selected Keeper Info -->
           <div v-if="selectedKeeper" class="flex items-center gap-3 p-4 rounded-2xl bg-monday-background">
             <div class="flex size-12 rounded-full bg-white items-center justify-center overflow-hidden">
-              <img :src="selectedKeeper.photo || '/src/assets/images/icons/profile-circle-grey.svg'" class="size-full object-cover" :alt="selectedKeeper.name">
+              <img :src="selectedKeeper.photo || '/assets/images/icons/profile-circle-grey.svg'" class="size-full object-cover" :alt="selectedKeeper.name">
             </div>
             <div class="flex flex-col gap-1">
               <p class="font-semibold text-lg">{{ selectedKeeper.name }}</p>
@@ -73,7 +73,7 @@
           </div>
           <label class="flex py-4 px-6 rounded-3xl border-[1.5px] border-monday-border focus-within:border-monday-black transition-300">
             <div class="flex h-full pr-4 pt-2 border-r-[1.5px] border-monday-border ">
-              <img src="/src/assets/images/icons/location-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/location-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <div class="flex flex-col gap-[6px] pl-4 w-full">
               <p class="placeholder font-medium text-monday-gray text-sm">
@@ -97,23 +97,23 @@
           <p class="font-semibold">Quick Guide to Edit Merchant</p>
           <ul class="flex flex-col gap-4">
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Ensure merchant information is updated accurately to maintain data consistency</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Make sure the phone number is active to ensure seamless communication</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Verify the assigned keeper if there has been a change</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Verify the merchant address to ensure accurate inventory management</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Ensure you use a recent photo to maintain up-to-date records</p>
             </li>
           </ul>

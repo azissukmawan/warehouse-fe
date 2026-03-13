@@ -20,7 +20,7 @@
           </div>
           <label class="group relative">
             <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border ">
-              <img src="/src/assets/images/icons/shop-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/shop-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] transition-300">
               Merchant Name
@@ -29,7 +29,7 @@
           </label>
           <label class="group relative">
             <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border ">
-              <img src="/src/assets/images/icons/call-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/call-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] transition-300">
               Phone Number
@@ -38,7 +38,7 @@
           </label>
           <label class="group relative rounded-3xl border-[1.5px] border-monday-border focus-within:border-monday-black transition-300 overflow-hidden">
             <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border ">
-              <img src="/src/assets/images/icons/user-thin-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/user-thin-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] transition-300">
               Select Keeper
@@ -51,13 +51,13 @@
                 {{ keeper.name }} ({{ keeper.email }})
               </option>
             </select>
-            <img src="/src/assets/images/icons/arrow-down-grey.svg" class="absolute transform -translate-y-1/2 top-1/2 right-6 size-6" alt="icon">
+            <img src="/assets/images/icons/arrow-down-grey.svg" class="absolute transform -translate-y-1/2 top-1/2 right-6 size-6" alt="icon">
           </label>
           
           <!-- Selected Keeper Info -->
           <div v-if="selectedKeeper" class="flex items-center gap-3 p-4 rounded-2xl bg-monday-background">
             <div class="flex size-12 rounded-full bg-white items-center justify-center overflow-hidden">
-              <img :src="selectedKeeper.photo || '/src/assets/images/icons/profile-circle-grey.svg'" class="size-full object-cover" :alt="selectedKeeper.name">
+              <img :src="selectedKeeper.photo || '/assets/images/icons/profile-circle-grey.svg'" class="size-full object-cover" :alt="selectedKeeper.name">
             </div>
             <div class="flex flex-col gap-1">
               <p class="font-semibold text-lg">{{ selectedKeeper.name }}</p>
@@ -67,7 +67,7 @@
           </div>
           <label class="flex py-4 px-6 rounded-3xl border-[1.5px] border-monday-border focus-within:border-monday-black transition-300">
             <div class="flex h-full pr-4 pt-2 border-r-[1.5px] border-monday-border ">
-              <img src="/src/assets/images/icons/location-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/location-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <div class="flex flex-col gap-[6px] pl-4 w-full">
               <p class="placeholder font-medium text-monday-gray text-sm">
@@ -91,23 +91,23 @@
           <p class="font-semibold">Quick Guide to Add New Merchant</p>
           <ul class="flex flex-col gap-4">
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Use a clear and recognizable merchant name</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Ensure the phone number is valid and reachable</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Assign a responsible and available keeper</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Double-check the merchant address for accuracy</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Upload a high-quality merchant photo for easy identification</p>
             </li>
           </ul>
@@ -128,7 +128,7 @@ export default {
   },
   data() {
     return {
-      defaultImage: '/src/assets/images/icons/gallery-default.svg',
+      defaultImage: '/assets/images/icons/gallery-default.svg',
       imagePreview: '',
       isSubmitting: false,
       isLoadingKeepers: false,

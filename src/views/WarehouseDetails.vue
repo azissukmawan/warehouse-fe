@@ -9,7 +9,7 @@
         <div class="flex flex-col gap-2 flex-1">
           <p class="font-semibold text-lg">{{ warehouse.name }}</p>
           <p class="flex items-center gap-1 font-medium text-lg text-monday-gray">
-            <img src="/src/assets/images/icons/call-grey.svg" class="size-6 flex shrink-0" alt="icon">
+            <img src="/assets/images/icons/call-grey.svg" class="size-6 flex shrink-0" alt="icon">
             <span>{{ warehouse.phone }}</span>
           </p>
         </div>
@@ -29,7 +29,7 @@
           </div>
           <router-link :to="`/assign-product/${warehouse.id}`" class="btn btn-primary font-semibold">
             Assign a Products
-            <img src="/src/assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
+            <img src="/assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
           </router-link>
         </div>
         <hr class="border-monday-border">
@@ -40,7 +40,7 @@
           
           <!-- Empty State -->
           <div v-if="warehouseProducts.length === 0" class="flex flex-col flex-1 items-center justify-center rounded-[20px] border-dashed border-2 border-monday-gray gap-6">
-            <img src="/src/assets/images/icons/document-text-grey.svg" class="size-[52px]" alt="icon">
+            <img src="/assets/images/icons/document-text-grey.svg" class="size-[52px]" alt="icon">
             <p class="font-semibold text-monday-gray">Oops, it looks like there's no data yet.</p>
           </div>
           
@@ -60,7 +60,7 @@
                   </div>
                 </div>
                 <div class="flex items-center gap-[6px] w-[154px] shrink-0">
-                  <img src="/src/assets/images/icons/box-black.svg" class="size-6 flex shrink-0" alt="icon">
+                  <img src="/assets/images/icons/box-black.svg" class="size-6 flex shrink-0" alt="icon">
                   <p class="font-semibold text-lg text-nowrap w-[124px] truncate">{{ product.stock }} Stock</p>
                 </div>
                 <div class="flex items-center gap-[6px] w-[154px] shrink-0">
@@ -90,7 +90,7 @@
         <div class="modal-header flex items-center justify-between">
           <p class="font-semibold text-xl">Product Details</p>
           <button @click="closeModal" class="flex size-14 rounded-full items-center justify-center bg-monday-gray-background">
-            <img src="/src/assets/images/icons/close-circle-black.svg" class="size-6" alt="icon">
+            <img src="/assets/images/icons/close-circle-black.svg" class="size-6" alt="icon">
           </button>
         </div>
         <div v-if="selectedProduct" class="modal-content flex flex-col rounded-3xl border border-monday-border p-4 gap-5">
@@ -170,25 +170,25 @@ export default {
       if (photo) {
         return photo
       }
-      return '/src/assets/images/icons/buildings-2-black.svg'
+      return '/assets/images/icons/buildings-2-black.svg'
     },
     getProductImage(photo) {
       // Use photo from API if available, otherwise use fallback
       if (photo) {
         return photo
       }
-      return '/src/assets/images/icons/bag-black.svg'
+      return '/assets/images/icons/bag-black.svg'
     },
     getCategoryIcon(categoryName) {
       // Map category names to icon paths
       const iconMap = {
-        'Cosmetics': '/src/assets/images/icons/Makeup-black.svg',
-        'Wristwatch': '/src/assets/images/icons/watch-black.svg',
-        'Printer': '/src/assets/images/icons/printer-black.svg',
-        'Milk': '/src/assets/images/icons/milk-black.svg',
-        'Glass': '/src/assets/images/icons/glass-black.svg'
+        'Cosmetics': '/assets/images/icons/Makeup-black.svg',
+        'Wristwatch': '/assets/images/icons/watch-black.svg',
+        'Printer': '/assets/images/icons/printer-black.svg',
+        'Milk': '/assets/images/icons/milk-black.svg',
+        'Glass': '/assets/images/icons/glass-black.svg'
       }
-      return iconMap[categoryName] || '/src/assets/images/icons/note-2-black.svg'
+      return iconMap[categoryName] || '/assets/images/icons/note-2-black.svg'
     },
     formatNumber(num) {
       return new Intl.NumberFormat('en-US').format(num)

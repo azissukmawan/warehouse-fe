@@ -125,7 +125,7 @@
               <div class="flex flex-col px-4 gap-5 py-5">
                 <button @click="toggleProductAssigned(index + 1)" class="flex items-center justify-between">
                   <p class="font-semibold text-lg">Product Assigned ({{ transaction.transaction_products?.length || 0 }})</p>
-                  <img :src="expandedSections.includes(index + 1) ? '/src/assets/images/icons/arrow-circle-down.svg' : '/src/assets/images/icons/arrow-circle-up.svg'" class="size-6 flex shrink-0 transition-300" alt="icon" />
+                  <img :src="expandedSections.includes(index + 1) ? '/assets/images/icons/arrow-circle-down.svg' : '/assets/images/icons/arrow-circle-up.svg'" class="size-6 flex shrink-0 transition-300" alt="icon" />
                 </button>
                 <div v-show="expandedSections.includes(index + 1)" class="flex flex-col gap-5">
                   <div v-for="product in transaction.transaction_products" :key="product.id" class="card flex items-center justify-between gap-3">
@@ -142,7 +142,7 @@
                       </div>
                     </div>
                     <div class="flex items-center gap-[6px] w-full">
-                      <img :src="getCategoryIcon(product.category?.name)" class="size-6 flex shrink-0" alt="icon" onerror="this.src = '/src/assets/images/icons/box-grey.svg'" />
+                      <img :src="getCategoryIcon(product.category?.name)" class="size-6 flex shrink-0" alt="icon" onerror="this.src = '/assets/images/icons/box-grey.svg'" />
                       <p class="font-semibold text-lg text-nowrap">{{ product.category?.name || 'Uncategorized' }}</p>
                     </div>
                     <button @click="showProductDetails(product)" class="btn btn-primary-opacity min-w-[130px] font-semibold">Details</button>
@@ -183,7 +183,7 @@
           <div class="flex items-center justify-between">
             <div class="flex flex-col gap-2">
               <p class="flex items-center gap-[6px] font-semibold text-lg">
-                <img :src="getCategoryIcon(selectedProduct.category?.name)" class="size-6 flex shrink-0" alt="icon" onerror="this.src = '/src/assets/images/icons/box-grey.svg'" />
+                <img :src="getCategoryIcon(selectedProduct.category?.name)" class="size-6 flex shrink-0" alt="icon" onerror="this.src = '/assets/images/icons/box-grey.svg'" />
                 {{ selectedProduct.category?.name || 'Uncategorized' }}
               </p>
               <p class="font-bold text-lg">{{ selectedProduct.product_name }}</p>
@@ -193,7 +193,7 @@
               </p>
             </div>
             <div class="flex size-[100px] rounded-2xl bg-monday-gray-background items-center justify-center overflow-hidden">
-              <img :src="selectedProduct.product_photo" class="size-full object-contain" alt="product" onerror="this.src = '/src/assets/images/icons/gallery-default.svg'" />
+              <img :src="selectedProduct.product_photo" class="size-full object-contain" alt="product" onerror="this.src = '/assets/images/icons/gallery-default.svg'" />
             </div>
           </div>
           <hr class="border-monday-border" />
@@ -337,16 +337,16 @@ const formatCurrency = (amount) => new Intl.NumberFormat('id-ID').format(amount 
 const formatNumber = (number) => new Intl.NumberFormat('id-ID').format(number ?? 0);
 
 const getCategoryIcon = (categoryName) => {
-  if (!categoryName) return '/src/assets/images/icons/box-grey.svg';
+  if (!categoryName) return '/assets/images/icons/box-grey.svg';
   const icons = {
-    cosmetics: '/src/assets/images/icons/Makeup-black.svg',
-    makeup: '/src/assets/images/icons/Makeup-black.svg',
-    electronics: '/src/assets/images/icons/smartwatch.png',
-    fashion: '/src/assets/images/icons/bag-black.svg',
-    food: '/src/assets/images/icons/milk-black.svg',
-    beverages: '/src/assets/images/icons/glass-black.svg',
+    cosmetics: '/assets/images/icons/Makeup-black.svg',
+    makeup: '/assets/images/icons/Makeup-black.svg',
+    electronics: '/assets/images/icons/smartwatch.png',
+    fashion: '/assets/images/icons/bag-black.svg',
+    food: '/assets/images/icons/milk-black.svg',
+    beverages: '/assets/images/icons/glass-black.svg',
   };
-  return icons[categoryName.toLowerCase()] || '/src/assets/images/icons/box-grey.svg';
+  return icons[categoryName.toLowerCase()] || '/assets/images/icons/box-grey.svg';
 };
 
 const refreshDashboard = async () => {

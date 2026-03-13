@@ -356,7 +356,7 @@ export default {
       price: '',
       popularity: false,
       description: '',
-      image: '/src/assets/images/icons/gallery-default.svg'
+      image: '/assets/images/icons/gallery-default.svg'
     })
     
     const loading = ref(false)
@@ -371,7 +371,7 @@ export default {
     const isLoadingProduct = ref(false)
     const showDeleteConfirmation = ref(false)
     
-    const defaultImage = '/src/assets/images/icons/gallery-default.svg'
+    const defaultImage = '/assets/images/icons/gallery-default.svg'
     
     const categories = computed(() => productsStore.categories)
     

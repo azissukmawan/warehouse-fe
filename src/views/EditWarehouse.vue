@@ -35,7 +35,7 @@
           <!-- Warehouse Name Input -->
           <label class="group relative">
             <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-              <img src="/src/assets/images/icons/buildings-2-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/buildings-2-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
               Warehouse Name
@@ -52,7 +52,7 @@
           <!-- Phone Number Input -->
           <label class="group relative">
             <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-              <img src="/src/assets/images/icons/call-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/call-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
               Phone Number
@@ -69,7 +69,7 @@
           <!-- Warehouse Address Textarea -->
           <label class="flex py-4 px-6 rounded-3xl border-[1.5px] border-monday-border focus-within:border-monday-black transition-300">
             <div class="flex h-full pr-4 border-r-[1.5px] border-monday-border">
-              <img src="/src/assets/images/icons/location-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/location-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <div class="flex flex-col gap-[6px] pl-4 w-full">
               <p class="placeholder font-medium text-monday-gray text-sm">
@@ -101,23 +101,23 @@
           <p class="font-semibold">Quick Guide to Edit Warehouse</p>
           <ul class="flex flex-col gap-4">
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Update the Warehouse Name if Lorem Necessary Ipsum Dummy</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Verify and Update the Contact Phone Number text Lorem Ipsum</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Ensure the Warehouse Address is Correct and Complete Color det amet</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Replace the Warehouse Image if Needed for Accuracy Lorem Ipsum</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Double-Check Everything Lorem Ipsum</p>
             </li>
           </ul>
@@ -186,7 +186,7 @@ export default {
       if (photo) {
         return photo
       }
-      return '/src/assets/images/icons/buildings-2-black.svg'
+      return '/assets/images/icons/buildings-2-black.svg'
     },
     handleImageUpload(event) {
       const file = event.target.files[0]

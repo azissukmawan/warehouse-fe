@@ -9,7 +9,7 @@
       
       <!-- Error State -->
       <div v-else-if="error" class="flex flex-col flex-1 items-center justify-center rounded-[20px] border-dashed border-2 border-red-300 gap-6">
-        <img src="/src/assets/images/icons/close-circle-black.svg" class="size-[52px]" alt="icon">
+        <img src="/assets/images/icons/close-circle-black.svg" class="size-[52px]" alt="icon">
         <p class="font-semibold text-red-600">{{ error }}</p>
         <button @click="loadCategory" class="btn btn-primary font-semibold">
           Coba Lagi
@@ -68,7 +68,7 @@
           <!-- Category Name Input -->
           <label class="group relative">
             <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-              <img src="/src/assets/images/icons/note-2-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/note-2-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
               Category Name
@@ -85,7 +85,7 @@
           <!-- Category Tagline Input -->
           <label class="group relative">
             <div class="flex items-center pr-4 absolute transform -translate-y-1/2 top-1/2 left-6 border-r-[1.5px] border-monday-border">
-              <img src="/src/assets/images/icons/document-grey.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/document-grey.svg" class="flex size-6 shrink-0" alt="icon">
             </div>
             <p class="placeholder font-medium text-monday-gray text-sm absolute -translate-y-1/2 left-[81px] top-[25px] group-has-[:placeholder-shown]:top-[36px] group-focus-within:top-[25px] transition-300">
               Category Tagline
@@ -121,23 +121,23 @@
           <p class="font-semibold">Quick Guide to Edit Category</p>
           <ul class="flex flex-col gap-4">
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Update the Category Name if Necessary </p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Ensure the Name is Still Relevant and Accurate Lorem Ipsum Simply text</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Verify the Image is Appropriate and Relevant Lorem Ipsum Color Text Mix</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Adjust the Parent Category if Needed for Accuracy Lorem Ipsum is Text Simply</p>
             </li>
             <li class="flex gap-[6px]">
-              <img src="/src/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/Checklist-green-circle.svg" class="flex size-6 shrink-0" alt="icon">
               <p class="font-medium leading-[140%]">Double-Check Everything Before Saving</p>
             </li>
           </ul>
@@ -286,13 +286,13 @@ export default {
       
       // Otherwise, use the icon mapping for local icons
       const iconMap = {
-        'milk-black': '/src/assets/images/icons/milk-black.svg',
-        'Makeup-black': '/src/assets/images/icons/Makeup-black.svg',
-        'watch-black': '/src/assets/images/icons/watch-black.svg',
-        'printer-black': '/src/assets/images/icons/printer-black.svg',
-        'glass-black': '/src/assets/images/icons/glass-black.svg'
+        'milk-black': '/assets/images/icons/milk-black.svg',
+        'Makeup-black': '/assets/images/icons/Makeup-black.svg',
+        'watch-black': '/assets/images/icons/watch-black.svg',
+        'printer-black': '/assets/images/icons/printer-black.svg',
+        'glass-black': '/assets/images/icons/glass-black.svg'
       }
-      return iconMap[iconName] || '/src/assets/images/icons/note-2-black.svg'
+      return iconMap[iconName] || '/assets/images/icons/note-2-black.svg'
     },
     
     handleImageUpload(event) {

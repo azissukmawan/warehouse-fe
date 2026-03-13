@@ -5,14 +5,14 @@
           <div id="Header" class="flex items-center justify-between px-[18px]">
             <div class="flex flex-col gap-[6px]">
               <p class="flex items-center gap-[6px]">
-                <img src="/src/assets/images/icons/shop-black.svg" class="size-6 flex shrink-0" alt="icon">
+                <img src="/assets/images/icons/shop-black.svg" class="size-6 flex shrink-0" alt="icon">
                 <span class="font-semibold text-2xl">{{ merchants.length }} Total Merchants</span>
               </p>
               <p class="font-semibold text-lg text-monday-gray">View and update your Merchants list here.</p>
             </div>
             <router-link to="/merchants/add" class="btn btn-primary font-semibold">
               Add New
-              <img src="/src/assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
+              <img src="/assets/images/icons/add-square-white.svg" class="flex size-6 shrink-0" alt="icon">
             </router-link>
           </div>
           <hr class="border-monday-border">
@@ -29,13 +29,13 @@
             </div>
             <!-- Loading State -->
             <div v-if="isLoading" class="flex flex-col flex-1 items-center justify-center rounded-[20px] border-dashed border-2 border-monday-gray gap-6">
-              <img src="/src/assets/images/icons/loading.svg" class="size-[52px] animate-spin" alt="loading">
+              <img src="/assets/images/icons/loading.svg" class="size-[52px] animate-spin" alt="loading">
               <p class="font-semibold text-monday-gray">Loading merchants...</p>
             </div>
             
             <!-- Empty State -->
             <div v-else-if="merchants.length === 0" class="flex flex-col flex-1 items-center justify-center rounded-[20px] border-dashed border-2 border-monday-gray gap-6">
-              <img src="/src/assets/images/icons/document-text-grey.svg" class="size-[52px]" alt="icon">
+              <img src="/assets/images/icons/document-text-grey.svg" class="size-[52px]" alt="icon">
               <p class="font-semibold text-monday-gray">Oops, it looks like there's no data yet.</p>
             </div>
             <!-- Merchants List -->
@@ -49,13 +49,13 @@
                     <div class="flex flex-col gap-2 flex-1">
                       <p class="font-semibold text-xl w-[228px] truncate">{{ merchant.name }}</p>
                       <p class="flex items-center gap-1 font-medium text-lg text-monday-gray">
-                        <img src="/src/assets/images/icons/location-grey.svg" class="size-6 flex shrink-0" alt="icon">
+                        <img src="/assets/images/icons/location-grey.svg" class="size-6 flex shrink-0" alt="icon">
                         <span>{{ merchant.address }}</span>
                       </p>
                     </div>
                   </div>
                   <div class="flex items-center gap-2">
-                    <img src="/src/assets/images/icons/bag-black.svg" class="size-6 flex shrink-0" alt="icon">
+                    <img src="/assets/images/icons/bag-black.svg" class="size-6 flex shrink-0" alt="icon">
                     <p class="font-semibold text-lg text-nowrap">{{ formatNumber(merchant.product_count) }} Products</p>
                   </div>
                   <div class="flex items-center gap-4">
@@ -69,7 +69,7 @@
                       :to="`/merchants/edit/${merchant.id}`" 
                       class="btn btn-black min-w-[130px] font-semibold"
                     >
-                      <img src="/src/assets/images/icons/edit-white.svg" class="flex size-6 shrink-0" alt="icon">
+                      <img src="/assets/images/icons/edit-white.svg" class="flex size-6 shrink-0" alt="icon">
                       Edit
                     </router-link>
                   </div>
@@ -211,7 +211,7 @@
         if (photo) {
           return photo
         }
-        return '/src/assets/images/icons/shop-black.svg'
+        return '/assets/images/icons/shop-black.svg'
       },
       formatNumber(num) {
         return new Intl.NumberFormat('en-US').format(num)

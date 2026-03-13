@@ -206,7 +206,7 @@ const userProfile = ref({
   name: 'Raratih Aqilla',
   role: 'Keeper',
   status: 'Active',
-  avatar: '/src/assets/images/photos/photos-3.png',
+  avatar: '/assets/images/photos/photos-3.png',
   phone: '+62 812-3456-7890',
   email: 'raratih.aqilla@example.com',
   location: 'Jakarta, Indonesia',
