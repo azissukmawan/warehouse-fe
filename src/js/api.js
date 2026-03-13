@@ -195,7 +195,7 @@ export const uploadProductImage = (file, options = {}) => {
   const formData = new FormData();
   formData.append('image', file);
 
-  return apiService.request('/api/v1/upload/product-image', {
+  return apiService.request('/api/v1/upload-product/product-image', {
     method: 'POST',
     body: formData,
     headers: {
