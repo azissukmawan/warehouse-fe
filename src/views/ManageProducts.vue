@@ -165,7 +165,9 @@ export default {
     const endIndex = computed(() => Math.min(startIndex.value + itemsPerPage.value, filteredProducts.value.length));
 
     const paginatedProducts = computed(() => {
-      return filteredProducts.value.slice(startIndex.value, endIndex.value);
+      const arr = filteredProducts.value
+      if (!Array.isArray(arr)) return []
+      return arr.slice(startIndex.value, endIndex.value)
     });
 
     const visiblePages = computed(() => {
