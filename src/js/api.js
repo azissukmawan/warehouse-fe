@@ -245,7 +245,7 @@ export const deleteUserRole = (id, options = {}) => apiService.delete(`/api/v1/a
 
 // Warehouses API methods
 export const getWarehouses = (query = '', options = {}) => apiService.get(`/api/v1/warehouses${query}`, options);
-export const getWarehouseById = (id, options = {}) => apiService.get(`/api/v1/warehouses/${id}/detail`, options);
+export const getWarehouseById = (id, options = {}) => apiService.get(`/api/v1/warehouses/${id}`, options);
 export const createWarehouse = (data, options = {}) => apiService.post('/api/v1/warehouses', data, options);
 export const updateWarehouse = (id, data, options = {}) => apiService.put(`/api/v1/warehouses/${id}`, data, options);
 export const deleteWarehouse = (id, options = {}) => apiService.delete(`/api/v1/warehouses/${id}`, options);

@@ -19,8 +19,8 @@
           <div id="Merchant-List" class="flex flex-col px-4 flex-1">
             <div class="flex items-center justify-between">
               <p class="font-semibold text-xl">All Merchants</p>
-              <button 
-                @click="loadMerchants" 
+              <button
+                @click="loadMerchants"
                 :disabled="isLoading"
                 class="btn btn-primary-opacity font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               >
@@ -32,7 +32,7 @@
               <img src="/assets/images/icons/loading.svg" class="size-[52px] animate-spin" alt="loading">
               <p class="font-semibold text-monday-gray">Loading merchants...</p>
             </div>
-            
+
             <!-- Empty State -->
             <div v-else-if="merchants.length === 0" class="flex flex-col flex-1 items-center justify-center rounded-[20px] border-dashed border-2 border-monday-gray gap-6">
               <img src="/assets/images/icons/document-text-grey.svg" class="size-[52px]" alt="icon">
@@ -59,14 +59,14 @@
                     <p class="font-semibold text-lg text-nowrap">{{ formatNumber(merchant.product_count) }} Products</p>
                   </div>
                   <div class="flex items-center gap-4">
-                    <router-link 
-                      :to="`/merchants/${merchant.id}`" 
+                    <router-link
+                      :to="`/merchants/${merchant.id}`"
                       class="btn btn-primary-opacity min-w-[130px] font-semibold"
                     >
                       Details
                     </router-link>
-                    <router-link 
-                      :to="`/merchants/edit/${merchant.id}`" 
+                    <router-link
+                      :to="`/merchants/edit/${merchant.id}`"
                       class="btn btn-black min-w-[130px] font-semibold"
                     >
                       <img src="/assets/images/icons/edit-white.svg" class="flex size-6 shrink-0" alt="icon">
@@ -84,28 +84,28 @@
               Showing {{ startIndex + 1 }}-{{ endIndex }} of {{ merchants.length }} merchants
             </p>
             <div class="flex items-center gap-2">
-              <button 
-                @click="previousPage" 
+              <button
+                @click="previousPage"
                 :disabled="currentPage === 1"
                 class="btn btn-primary-opacity font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Previous
               </button>
-              <button 
-                v-for="page in visiblePages" 
+              <button
+                v-for="page in visiblePages"
                 :key="page"
                 @click="goToPage(page)"
                 :class="[
                   'px-4 py-2 rounded-2xl font-semibold transition-300',
-                  page === currentPage 
-                    ? 'bg-monday-blue text-white' 
+                  page === currentPage
+                    ? 'bg-monday-blue text-white'
                     : 'bg-monday-gray-background text-monday-gray hover:bg-monday-border'
                 ]"
               >
                 {{ page }}
               </button>
-              <button 
-                @click="nextPage" 
+              <button
+                @click="nextPage"
                 :disabled="currentPage === totalPages"
                 class="btn btn-primary-opacity font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               >
@@ -117,11 +117,11 @@
       </main>
     </Layout>
   </template>
-  
+
   <script>
   import Layout from '@/components/Layout.vue'
   import { getMerchants } from '@/js/api'
-  
+
   export default {
     name: 'ManageMerchants',
     components: {
@@ -178,10 +178,11 @@
         this.isLoading = true
         try {
           const response = await getMerchants()
-          
-          // Map API response to component data
-          this.merchants = response.data || []
-          this.pagination = response.pagination || {
+
+          // Map API response to component data (support nested and flat payloads)
+          const payload = response?.data?.data || response?.data || {}
+          this.merchants = payload.data || []
+          this.pagination = payload.pagination || response?.pagination || {
             current_page: 1,
             total_pages: 1,
             total_records: this.merchants.length,
@@ -189,7 +190,7 @@
             has_next: false,
             has_prev: false
           }
-          
+
         } catch (error) {
           console.error('Error loading merchants:', error)
           this.merchants = []
@@ -219,7 +220,7 @@
     }
   }
   </script>
-  
+
   <style scoped>
   .monday-blue {
     @apply text-[#0073EA];
@@ -268,4 +269,4 @@
   .transition-300 {
     @apply transition-all duration-300;
   }
-  </style> 
+  </style>
