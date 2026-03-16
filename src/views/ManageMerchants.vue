@@ -179,18 +179,34 @@
         try {
           const response = await getMerchants()
 
-          // Map API response to component data (support nested and flat payloads)
-          const payload = response?.data?.data || response?.data || {}
-          this.merchants = payload.data || []
-          this.pagination = payload.pagination || response?.pagination || {
-            current_page: 1,
-            total_pages: 1,
-            total_records: this.merchants.length,
-            limit: 10,
-            has_next: false,
-            has_prev: false
-          }
+          // Normalize response for multiple backend/wrapper shapes
+          const level1 = response?.data ?? response
+          const level2 = level1?.data ?? level1
 
+          // Merchant list candidates
+          const list =
+            (Array.isArray(level2) && level2) ||
+            (Array.isArray(level2?.data) && level2.data) ||
+            (Array.isArray(level1?.data) && level1.data) ||
+            []
+
+          // Pagination candidates
+          const pagination =
+            level2?.pagination ||
+            level1?.pagination ||
+            response?.pagination ||
+            {
+              current_page: 1,
+              total_pages: 1,
+              total_records: list.length,
+              limit: 10,
+              has_next: false,
+              has_prev: false
+            }
+
+          this.merchants = list
+          this.pagination = pagination
+          this.currentPage = 1
         } catch (error) {
           console.error('Error loading merchants:', error)
           this.merchants = []

@@ -268,7 +268,7 @@ export const uploadWarehouseImage = (file, options = {}) => {
 };
 
 // Assign Product to Warehouse API method
-export const assignProductToWarehouse = (warehouseId, data, options = {}) => apiService.post(`/api/v1/warehouses/${warehouseId}/detail`, data, options);
+export const assignProductToWarehouse = (warehouseId, data, options = {}) => apiService.post(`/api/v1/warehouse-products/${warehouseId}`, data, options);
 
 // Get Warehouse Product Detail API method
 export const getWarehouseProductDetail = (warehouseId, productId, options = {}) => apiService.get(`/api/v1/warehouses/${warehouseId}/detail/${productId}`, options);
